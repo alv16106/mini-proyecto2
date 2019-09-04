@@ -1,4 +1,6 @@
 import random
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 def probability_maker(params):
@@ -26,6 +28,18 @@ def simulate(cost, price, buyback, daily, n=30):
 
 if __name__ == "__main__":
     r_sales = probability_maker((0.3, 0.7, 1))
-    print(simulate(1.5, 2.5, 0.5, 9, 10))
-    print(simulate(1.5, 2.5, 0.5, 10, 10))
-    print(simulate(1.5, 2.5, 0.5, 11, 10))
+    repetitions = [30, 365, 3650]
+    nine = [simulate(1.5, 2.5, 0.5, 9, r) for r in repetitions]
+    ten = [simulate(1.5, 2.5, 0.5, 10, r) for r in repetitions]
+    eleven = [simulate(1.5, 2.5, 0.5, 11, r) for r in repetitions]
+
+    bars = ('9', '10', '11')
+    colors = ['chartreuse', 'c', 'tomato']
+    y_pos = [0, 1, 2]
+
+    for i in range(len(repetitions)):
+        plt.figure(i)
+        plt.bar(y_pos, [nine[i], ten[i], eleven[i]], color=colors)
+        plt.xticks(y_pos, bars)
+
+    plt.show()

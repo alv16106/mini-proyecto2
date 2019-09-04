@@ -1,5 +1,6 @@
 def get_first_dist():
     dist = [
+        {'start': 800},
         {'type': 'normal', 'limits': (-800, 50)},
         {'type': 'normal', 'limits': (-800, 100)},
         {'type': 'normal', 'limits': (-700, 150)},
@@ -13,6 +14,7 @@ def get_first_dist():
 
 def get_second_dist():
     dist = [
+        {'start': 900},
         {'type': 'normal', 'limits': (-600, 50)},
         {'type': 'normal', 'limits': (-200, 50)},
         {'type': 'normal', 'limits': (-600, 100)},
