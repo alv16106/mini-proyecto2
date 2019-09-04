@@ -3,15 +3,15 @@ import numpy as np
 from get_distributions3 import get_first_dist, get_second_dist
 
 
-def vpn(fluxes, k, Io):
+def vpn(fluxes=[], k=1, Io=1):
     return -Io + sum(flux / (1 + k)**(i + 1) for i, flux in enumerate(fluxes))
 
 
-def exponential(l):
+def exponential(l=5):
     return np.log(1 - random.random()) / -l
 
 
-def normal_dist_random(mu, sigma):
+def normal_dist_random(mu=0, sigma=1):
     while True:
         y1 = exponential(1)
         y2 = exponential(1)

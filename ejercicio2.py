@@ -16,7 +16,7 @@ def plot_bar_x(values, frequency, title='Title'):
     plt.savefig('demo.png', bbox_inches='tight')
 
 
-def random_weighted(fi, p):
+def random_weighted(v, p):
     """ if p.sum() != 1:
         raise Exception('The sum of the p (probabilities) should be 1 not ' +
                         str(p.sum()))
@@ -27,18 +27,24 @@ def random_weighted(fi, p):
         return
 
     def f():
-        ac = 0
-        for i in range(0, len(fi)):
-            r = random.random()
-            ac = ac + p[i] * fi[i](r)
-
-        return ac
+        r = random.random()
+        for i, value in enumerate(v):
+            if r <= np.sum(p[0:i + 1]):
+                return value
 
     return f
 
 
-f = random_weighted([], [])
-a = np.zeros(ITERATIONS)
+v = np.array([1, 2, 3, 4, 5, 6])
+p = np.array([0.1, 0.1, 0.2, 0.3, 0.2, 0.1])
+print(np.sum(p, dtype=np.double))
+frequency = np.zeros(v.shape)
+
+f = random_weighted(v, p)
 
 for i in range(0, ITERATIONS):
-    a[i] = f()
+    va = f()
+    i, = np.where(v == va)
+    frequency[i] = frequency[i] + 1
+
+plot_bar_x(v, (frequency / ITERATIONS) * 100, title='Frecuencia')
