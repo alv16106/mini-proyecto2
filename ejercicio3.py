@@ -47,7 +47,7 @@ if __name__ == "__main__":
     d1 = get_first_dist()
     d2 = get_second_dist()
 
-    # SImulate for 100, 1000 and 10000
+    # Simulate for 100, 1000 and 10000
     repetitions = [100, 1000, 10000]
     fp = [simulate(d1, 0.1, r) for r in repetitions]
     sp = [simulate(d2, 0.1, r) for r in repetitions]
@@ -85,4 +85,4 @@ if __name__ == "__main__":
     plt.legend()
 
     plt.tight_layout()
-    plt.show()
+    plt.savefig('demo.png', bbox_inches='tight')

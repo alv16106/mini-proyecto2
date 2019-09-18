@@ -42,4 +42,4 @@ if __name__ == "__main__":
         plt.bar(y_pos, [nine[i], ten[i], eleven[i]], color=colors)
         plt.xticks(y_pos, bars)
 
-    plt.show()
+    plt.savefig('demo.png', bbox_inches='tight')
